@@ -21,8 +21,9 @@ def load_model_from_gdrive(file_id):
     url = f"https://drive.google.com/uc?id={file_id}"
     output_path = os.path.join(settings.BASE_DIR, "temp_model.h5")
 
-    # Download the model file using gdown
-    gdown.download(url, output_path, quiet=False)
+    # Only download if not already present
+    if not os.path.exists(output_path):
+        gdown.download(MODEL_URL, output_path, quiet=False)
 
     # Load the model
     model = load_model(output_path)
