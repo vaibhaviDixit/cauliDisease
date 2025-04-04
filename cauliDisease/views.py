@@ -23,7 +23,7 @@ def load_model_from_gdrive(file_id):
 
     # Only download if not already present
     if not os.path.exists(output_path):
-        gdown.download(MODEL_URL, output_path, quiet=False)
+        gdown.download(url, output_path, quiet=False)
 
     # Load the model
     model = load_model(output_path)
