@@ -30,8 +30,6 @@ def load_model_from_gdrive(file_id):
     return model
 
 
-model = load_model_from_gdrive("1cZOrcejhhGjgPTBGeNdpYj88aDHrehpI")
-
 CLASS_NAMES = [
     'Bacterial Spot',
     'Bacterial soft rot',
@@ -43,6 +41,9 @@ CLASS_NAMES = [
 
 def predict_image(image_path):
     """Load an image, preprocess it, and predict its class using the model."""
+    
+    model = load_model_from_gdrive("1cZOrcejhhGjgPTBGeNdpYj88aDHrehpI")
+
     image = load_img(image_path, target_size=(224, 224))  
     image_array = img_to_array(image) / 255.0  
     image_array = np.expand_dims(image_array, axis=0)  
